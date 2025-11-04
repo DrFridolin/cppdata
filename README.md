@@ -379,7 +379,7 @@ General-purpose stack that runs a singly-linked [node&lt;T, false&gt;](#nodet-d)
 &nbsp;
 
 Notation for __stack&lt;T&gt;__ big-O:
-- N: Number of queue elements.
+- N: Number of stack elements.
 
 | Method Signature | Description | Average | Worst | Space |
 |------------------|-------------|:-------:|:-----:|:-----:|
@@ -464,7 +464,7 @@ Due to limitations both inherent and deliberate in its design, __graph_node&lt;T
 
 Notation for __graph_node&lt;T&gt;__ big-O:
 - N: Total number of nodes in the graph node chain.
-- E: Total number of edges in the graph.
+- E: Total number of edges in the graph node chain.
 - A: Expected adjacency list size for graph nodes.
 - N<sub>D</sub>: Number of nodes traversed to find target at depth D.
 - E<sub>D</sub>: Number of edges traversed to find target at depth D.
