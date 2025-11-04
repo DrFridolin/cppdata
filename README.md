@@ -23,7 +23,7 @@ Currently, cppdata implements the following data structures:
 - [stack&lt;T&gt;](#stackt) : General-purpose stack implemented with a singly-linked list (node&lt;T, false&gt;).
 - [queue&lt;T&gt;](#queuet) : General-purpose queue implemented with a doubly-linked list (linked_list&lt;T, true&gt;).
 - [graph_node&lt;T&gt;](#graph_nodet) : Self-referential graph nodes for acyclic and unweighted connected graphs and trees.
-- [graph&lt;T&gt;](#grapht) : Weighted and unweighted graphs that track graph_node&lt;T&gt; pointers in a dyn_array&lt;graph_node&lt;T&gt;*&gt; member.
+- [graph&lt;T&gt;](#grapht) : Weighted and unweighted graphs that track graph_node pointers in a dyn_array member.
 - [binary_tree&lt;T, P&gt;](#binary_treet-p) : Self-referential binary tree nodes, with (P=true) or without (P=false) parent links.
 - [binary_search_tree&lt;T, P&gt;](#binary_search_treet-p) : Self-referential binary search tree nodes, with (P=true) or without (P=false) parent links.
 - [avl_tree&lt;T, P&gt;](#avl_treet-p) : Self-referential AVL tree nodes, with (P=true) or without (P=false) parent links.
@@ -31,7 +31,7 @@ Currently, cppdata implements the following data structures:
 - [heap_tree&lt;T, P, M&gt;](#heap_treet-p-m) : Self-referential tree-based min (M=false) and max (M=true) heap, with (P=true) or without (P=false) parent links.
 - [heap&lt;T&gt;](#heapt) : Array-based min/max heap.
 - [trie](#trie) : Self-referential trie nodes.
-- [hash_table&lt;K, V&gt;](#hash_tablek-v) : Type-aware hash table implemented with a fixed-size raw array of singly-linked node&lt;T, false&gt; chains.
+- [hash_table&lt;K, V&gt;](#hash_tablek-v) : Type-aware hash table implemented with a fixed-size raw array of singly-linked lists (node&lt;T, false&gt;).
 
 ## Table of Contents
 

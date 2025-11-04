@@ -1069,13 +1069,13 @@ binary_tree<T, P>* binary_tree<T, P>::set_members(const binary_tree<T, P>* src)
   // Use RTTI to determine if additional members need to be set.
   binary_search_tree<T, P>* bst_this;
   const binary_search_tree<T, P>* bst_src;
-  if (bst_src = dynamic_cast<const binary_search_tree<T, P>*>(src))
-    if (bst_this = dynamic_cast<binary_search_tree<T, P>*>(this))
+  if ((bst_src = dynamic_cast<const binary_search_tree<T, P>*>(src)))
+    if ((bst_this = dynamic_cast<binary_search_tree<T, P>*>(this)))
       bst_this->set_count(bst_src->count());
   red_black_tree<T>* rb_this;
   const red_black_tree<T>* rb_src;
-  if (rb_src = dynamic_cast<const red_black_tree<T>*>(src))
-    if (rb_this = dynamic_cast<red_black_tree<T>*>(this))
+  if ((rb_src = dynamic_cast<const red_black_tree<T>*>(src)))
+    if ((rb_this = dynamic_cast<red_black_tree<T>*>(this)))
       rb_this->set_color(rb_src->is_red());
   return this;
 }
