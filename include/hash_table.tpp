@@ -2,6 +2,7 @@
 // The class should build and run properly without it. Header guard protection
 // prevents the apparent circular inclusion from causing any problems.
 #include "hash_table.h"
+#include <cstring>
 
 // Forward declarations needed by full class specializations of hash_fn<K>
 template <class T>                 class stack;
@@ -25,6 +26,7 @@ template <class T>
 std::ostream& operator << (std::ostream& os, const heap<T>& h);
 std::ostream& operator << (std::ostream& os, const trie& tr);
 
+#include "trie.h"
 
 //======================================================================//
 //                                                                      //
@@ -592,7 +594,7 @@ std::ostream& operator << (std::ostream& os, const hash_table<K, V>& ht)
       os << "EMPTY";
     }
     else {
-      hash_table<K, V>::hash_list* hl = ht.table_[i];
+      typename hash_table<K, V>::hash_list* hl = ht.table_[i];
       while (hl) {
         os << "(\"" << hl->val().key_ << "\":" << hl->val().val_ << ")";
         if (hl->next())

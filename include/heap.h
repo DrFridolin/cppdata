@@ -4,7 +4,6 @@
 #include <iostream>
 #include <initializer_list>
 #include "dyn_array.h"
-#include "binary_tree.h"
 
 template <class T, bool P, bool M> class heap_tree;
 

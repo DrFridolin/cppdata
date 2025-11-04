@@ -365,9 +365,10 @@ int main()
     }
   }
   TEST_CHECK(sorted, "In-order traversal path should have sorted values");
-  std::cout << "Resulting search tree:" << std::endl << bst << std::endl;
+  std::cout << std::endl;
 
-  std::cout << "Balanced the search tree:" << std::endl << bst->balance();
+  bst->balance();
+  std::cout << "Balanced the search tree. ";
   std::cout << "Checking properties after balancing:" << std::endl;
   TEST_EQUAL(bst->is_full(), 0, "Search tree should not be full");
   TEST_CHECK(bst->is_balanced(), "Search tree should be balanced");
@@ -395,9 +396,10 @@ int main()
     }
   }
   TEST_CHECK(sorted, "In-order traversal path should have sorted values");
-  std::cout << "Resulting search tree:" << std::endl << bst << std::endl;
+  std::cout << std::endl;
 
-  std::cout << "Balanced the search tree:" << std::endl << bst->balance();
+  bst->balance();
+  std::cout << "Balanced the search tree. ";
   std::cout << "Checking properties after balancing:" << std::endl;
   TEST_EQUAL(bst->is_full(), 0, "Search tree should not be full");
   TEST_CHECK(bst->is_balanced(), "Search tree should be balanced");

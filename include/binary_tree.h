@@ -7,10 +7,8 @@
 #include <functional>
 #include <type_traits>
 #include "dyn_array.h"
-#include "graph.h"
-#include "heap.h"
 
-// template <class T> class graph_node;
+// Forward declarations, aliases and enums before graph.h/heap.h for gcc/clang.
 template <class T, bool P> class binary_tree;
 template <class T, bool P> class binary_search_tree;
 template <class T, bool P, bool M> class heap_tree;
@@ -22,8 +20,8 @@ template <class T, bool P>
 using bt_ptrs = dyn_array<binary_tree<T, P>*>;
 template <class T, bool P>
 using cbt_ptrs = dyn_array<const binary_tree<T, P>*>;
-template <class T, bool P>
-using rb_ok = typename std::enable_if<P, red_black_tree<T>*>::type;
+template <class T, bool B>
+using rb_ok = typename std::enable_if<B, red_black_tree<T>*>::type;
 template <class T, bool P>
 using TreeType = typename binary_tree<T, P>::BinaryTreeType;
 
@@ -35,6 +33,9 @@ enum class ParentLinkedType {STANDARD = 0, SEARCH = 1, MIN_HEAP  = 2,
                              MAX_HEAP = 3, AVL    = 4, RED_BLACK = 5};
 // Unscoped global enum to specify traversal types internally.
 enum TravType {IN_ORDER, PRE_ORDER, POST_ORDER, LEVEL_ORDER};
+
+#include "graph.h"
+#include "heap.h"
 
 // The extensive inheritance hierarchy rooted at graph_node<T> takes on its
 // most baroque form with binary_tree<T, P> polymorphism, which aims not only
@@ -213,7 +214,7 @@ class binary_tree : public graph_node<T>
     static heap_tree<T, P, false>* MIN_HEAP(const T& v);
     static heap_tree<T, P, true>* MAX_HEAP(const T& v);
     static avl_tree<T, P>* AVL(const T& v);
-    template <bool B = P> static typename rb_ok<T, B> RED_BLACK(const T& v);
+    template <bool B = P> static rb_ok<T, B> RED_BLACK(const T& v);
 
     // Destructor recursively deletes all descendant nodes. O(N) | O(H)
     virtual ~binary_tree();
@@ -356,14 +357,14 @@ class binary_tree : public graph_node<T>
     bool has_subtree(const binary_tree<T, P>* bt_ptr) const;
 
     // Prints tree structure. O(N) | O(H)
-    template <class U, bool P>
+    template <class U, bool Q>
     friend std::ostream& operator << (std::ostream& os,
-                                      const binary_tree<U, P>* bt);
+                                      const binary_tree<U, Q>* bt);
     // Compactly prints tree structure by replacing endlines with '~' and
     // getting rid of unnecessary spaces. O(N) | O(H)
-    template <class U, bool P>
+    template <class U, bool Q>
     friend std::ostream& operator << (std::ostream& os,
-                                      const binary_tree<U, P>& bt);
+                                      const binary_tree<U, Q>& bt);
 
   protected:
     // Only constructor is reserved for factory create method.
@@ -461,8 +462,8 @@ class binary_search_tree : public binary_tree<T, P>
     // Returns the total number of nodes in the tree. O(N) | O(N)
     size_t num_nodes() const {return this->binary_tree<T, P>::size();}
 
-    using binary_tree::operator==;
-    using binary_tree::operator!=;
+    using binary_tree<T, P>::operator==;
+    using binary_tree<T, P>::operator!=;
     // Override adds duplicate counts to the comparison.
     // O(1) average, O(N) worst | O(H)
     bool operator == (const binary_search_tree<T, P>& other) const;

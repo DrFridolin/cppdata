@@ -901,8 +901,6 @@ int main()
   size_t old_sz = unique_in.size();
   int gt4[9] = {4, 2, 2, 1, 1, 2, 1, 1, 2};
   dyn_array<size_t> counts = unique_in.unique_cnt();
-  std::cout << unique_in << std::endl;
-  std::cout << counts << std::endl;
   std::cout << "Ran in-place unique method returning counts:" << std::endl;
   TEST_EQUAL(unique_in.size(), counts.size(), "Sizes of results should match");
   for (size_t i = 0; i < counts.size(); ++i)

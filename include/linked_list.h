@@ -3,8 +3,8 @@
 
 #include <iostream>
 #include <initializer_list>
-#include "dyn_array.h"
 
+template <class T> class dyn_array;
 template <class T, bool D> class node;
 template <class K, class V> class hash_node;
 
@@ -91,7 +91,7 @@ class node : public node_base<T, D>
 {
   // Allows hash_node access to the protected copy constructor for hashing.
   template <class K, class V> friend class hash_node;
-  template <class T> friend class dyn_array;
+  template <class U> friend class dyn_array;
 
   public:
     // Creates a new node on the heap. O(1) | O(1)
@@ -182,13 +182,13 @@ class node : public node_base<T, D>
     node<T, D>* selection_sort(bool inc = true);
 
     // Prints node chain contents. O(N) | O(1)
-    template <class T, bool D>
+    template <class U, bool B>
     friend std::ostream& operator << (std::ostream& os,
-                                      const node<T, D>* n_ptr);
+                                      const node<U, B>* n_ptr);
     // Compactly prints node chain contents by omitting arrows. O(N) | O(1)
-    template <class T, bool D>
+    template <class U, bool B>
     friend std::ostream& operator << (std::ostream& os,
-                                      const node<T, D>& n_ins);
+                                      const node<U, B>& n_ins);
     // Recursive function to print the doubly-linked nodes behind this node.
     void print_prev(std::ostream& os) const;
 
@@ -333,9 +333,9 @@ class linked_list
     linked_list<T, D>& selection_sort(bool inc = true);
 
     // Prints linked list contents.
-    template <class T, bool D>
+    template <class U, bool B>
     friend std::ostream& operator << (std::ostream& os,
-                                      const linked_list<T, D>& list);
+                                      const linked_list<U, B>& list);
   protected:
     node<T, D>* head_;
     node<T, D>* tail_;

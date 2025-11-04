@@ -84,7 +84,7 @@ avl_tree<T, P>* binary_tree<T, P>::AVL(const T& v)
 
 template <class T, bool P>
 template <bool B>
-typename rb_ok<T, B> binary_tree<T, P>::RED_BLACK(const T& v)
+rb_ok<T, B> binary_tree<T, P>::RED_BLACK(const T& v)
 {
   binary_tree<T, true>* buf;
   buf = binary_tree<T, true>::create(v, BinaryTreeType::RED_BLACK);

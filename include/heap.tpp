@@ -2,6 +2,7 @@
 // The class should build and run properly without it. Header guard protection
 // prevents the apparent circular inclusion from causing any problems.
 #include "heap.h"
+#include "binary_tree.h"
 
 //======================================================================//
 //                                                                      //

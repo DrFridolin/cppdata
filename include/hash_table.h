@@ -180,9 +180,9 @@ class hash_table
     dyn_array<V*> vals() const;
 
     // Prints hash table contents to output stream. O(N+T) | O(1)
-    template <class K, class V>
+    template <class Key, class Val>
     friend std::ostream& operator << (std::ostream& os,
-                                      const hash_table<K, V>& ht);
+                                      const hash_table<Key, Val>& ht);
 
   private:
     typedef node<hash_node<K, V>, false> hash_list;

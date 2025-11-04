@@ -2,6 +2,7 @@
 // The class should build and run properly without it. Header guard protection
 // prevents the apparent circular inclusion from causing any problems.
 #include "linked_list.h"
+#include "dyn_array.h"
 
 //======================================================================//
 //                                                                      //

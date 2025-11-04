@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include <bitset>
+#include <cstring>
 #include "test_util.h"
 #include "hash_table.h"
 
